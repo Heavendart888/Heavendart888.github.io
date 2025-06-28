@@ -1,571 +1,418 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Systems Engineer Portfolio - Futurist Redesign</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #211f1c; /* Dark Charcoal/Brown */
+            color: #dcd9c6; /* Warm Muted Slate */
+            cursor: none; /* Hide the default cursor */
+        }
+        h1, h2, h3, h4, h5, h6, .text-strong {
+             color: #f4f1de; /* Warm Off-white */
+        }
+        .font-mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+        #three-canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+        }
+        #three-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .highlight {
+            color: #ffc247; /* Golden Yellow */
+        }
+        .section {
+            padding: 100px 0;
+            min-height: 80vh;
+            position: relative;
+        }
+        .project-card {
+            background-color: #2b2926; /* Lighter Charcoal */
+            border: 1px solid #3f3c38;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px -5px rgba(255, 194, 71, 0.2);
+            border-color: rgba(255, 194, 71, 0.3);
+        }
+
+        /* Animation for elements fading in on scroll */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+            will-change: opacity; /* Performance hint for browser */
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+        }
+
+        /* Custom Bracket Cursor Styles */
+        .cursor {
+            width: 30px;
+            height: 20px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%) translateZ(0); /* Promotes to own layer */
+            will-change: transform; /* Performance hint for browser */
+        }
+
+        .cursor::before,
+        .cursor::after {
+            content: '';
+            position: absolute;
+            width: 8px; /* Width of the bracket part */
+            height: 100%;
+            border-style: solid;
+            border-color: #ffc247; /* Golden Yellow */
+            border-width: 2px;
+            transition: transform 0.2s ease-in-out;
+            will-change: transform;
+        }
+
+        /* Left bracket: [ */
+        .cursor::before {
+            left: 0;
+            border-right: none;
+        }
+
+        /* Right bracket: ] */
+        .cursor::after {
+            right: 0;
+            border-left: none;
+        }
+        
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #ffc247;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%) translateZ(0); /* Promotes to own layer */
+            transition: opacity 0.2s ease-in-out;
+            will-change: transform;
+        }
+
+        /* Cursor hover effect: brackets move inwards */
+        .cursor.cursor-hover::before {
+            transform: translateX(6px);
+        }
+
+        .cursor.cursor-hover::after {
+            transform: translateX(-6px);
+        }
+
+    </style>
 </head>
-<body class="main-content">
-    <header class="container header active" id="home">
-        <div class="header-content">
-            <div class="left-header">
-                <div class="h-shape"></div>
-                <div class="image">
-                    <img src="img/hero.png" alt="">
+<body class="antialiased">
+
+    <!-- The two divs for our custom cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <div id="three-canvas-container">
+        <canvas id="three-canvas"></canvas>
+    </div>
+
+    <div class="content-wrapper">
+        <header class="sticky top-0 z-30 bg-[#211f1c]/50 backdrop-blur-lg">
+            <nav class="flex items-center justify-between max-w-6xl mx-auto px-4 py-4">
+                <a href="#" class="text-2xl font-bold highlight" aria-label="Home">BS.</a>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-strong">
+                    <a href="#about" class="hover:text-highlight transition-colors">About</a>
+                    <a href="#skills" class="hover:text-highlight transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-highlight transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-highlight transition-colors">Contact</a>
                 </div>
-            </div>
-            <div class="right-header">
-                <h1 class="name">
-                    Hi, I'm <span>Biswajit Sahoo</span>
-                    A Android Developer.
-                </h1>
-                <p>
-                    As an Android developer, I find joy in designing and developing visually 
-                    appealing and highly functional mobile applications. I am dedicated to 
-                    crafting user-friendly interfaces and utilizing the latest technology to 
-                    enhance the overall user experience. The remaining text appears to be placeholder 
-                    text often used in the development process.
-                </p>
-                <div class="btn-con">
-                    <a href="" class="main-btn">
-                        <span class="btn-text">Download CV</span>
-                        <span class="btn-icon"><i class="fas fa-download"></i></span>
+            </nav>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4">
+            <!-- Hero Section -->
+            <section id="hero" class="h-screen flex flex-col justify-center items-center text-center">
+                <div class="bg-[#211f1c]/60 p-8 rounded-lg backdrop-blur-sm">
+                    <span class="font-bold highlight font-mono">SYSTEMS ENGINEER</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-strong mt-2">Biswajit Sahoo</h1>
+                    <p class="mt-4 text-lg max-w-2xl">
+                        Architecting the digital frontier. I build and maintain robust, scalable, and secure infrastructures that power the future.
+                    </p>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section fade-in">
+                <div class="grid md:grid-cols-2 gap-16 items-center bg-[#211f1c]/60 p-8 rounded-lg backdrop-blur-sm">
+                    <div>
+                        <h2 class="text-3xl font-bold text-strong mb-4">About Me</h2>
+                        <p class="space-y-4 text-lg">
+                            With over 8 years of experience, I specialize in the architecture and automation of complex systems. My passion is transforming intricate problems into elegant, efficient solutions, ensuring reliability and peak performance from the ground up.
+                        </p>
+                    </div>
+                    <div class="hidden md:block">
+                        <!-- Placeholder for visual element or more text -->
+                        <div class="w-full h-64 border-2 border-dashed border-gray-700 rounded-lg flex items-center justify-center">
+                            <span class="text-gray-600">Visual Placeholder</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="section fade-in">
+                 <div class="text-center bg-[#211f1c]/60 p-8 rounded-lg backdrop-blur-sm">
+                    <h2 class="text-3xl font-bold text-strong">Core Competencies</h2>
+                    <p class="mt-2">Technologies I use to build and maintain systems.</p>
+                </div>
+                <div class="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    <!-- Skill Item -->
+                    <div class="flex flex-col items-center p-4 rounded-lg space-y-3 group text-center bg-[#2b2926] border border-[#3f3c38]">
+                        <svg class="w-10 h-10 text-highlight" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                        <span class="font-semibold text-strong">Cloud Architecture</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 rounded-lg space-y-3 group text-center bg-[#2b2926] border border-[#3f3c38]">
+                        <svg class="w-10 h-10 text-highlight" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        <span class="font-semibold text-strong">Infrastructure Security</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 rounded-lg space-y-3 group text-center bg-[#2b2926] border border-[#3f3c38]">
+                        <svg class="w-10 h-10 text-highlight" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        <span class="font-semibold text-strong">System Automation</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 rounded-lg space-y-3 group text-center bg-[#2b2926] border border-[#3f3c38]">
+                        <svg class="w-10 h-10 text-highlight" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V6a2 2 0 012-2h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V8z" /></svg>
+                        <span class="font-semibold text-strong">Container Orchestration</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 rounded-lg space-y-3 group text-center bg-[#2b2926] border border-[#3f3c38]">
+                        <svg class="w-10 h-10 text-highlight" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" />
+                        </svg>
+                        <span class="font-semibold text-strong">Network Engineering</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section fade-in">
+                 <div class="text-center bg-[#211f1c]/60 p-8 rounded-lg backdrop-blur-sm">
+                    <h2 class="text-3xl font-bold text-strong">Case Studies</h2>
+                    <p class="mt-2">A selection of my recent work.</p>
+                </div>
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card rounded-lg p-6 flex flex-col">
+                        <h3 class="text-xl font-bold text-strong mb-2">Cloud Infrastructure Automation</h3>
+                        <p class="flex-grow">Automated AWS deployments with Python & Ansible, cutting deployment times by 90%.</p>
+                        <footer class="mt-4 font-mono text-xs highlight space-x-4"><span>Python</span><span>Ansible</span></footer>
+                    </div>
+                    <div class="project-card rounded-lg p-6 flex flex-col">
+                        <h3 class="text-xl font-bold text-strong mb-2">High-Availability Server Cluster</h3>
+                        <p class="flex-grow">Built a Linux cluster with Pacemaker, achieving 99.99% uptime for critical services.</p>
+                        <footer class="mt-4 font-mono text-xs highlight space-x-4"><span>Linux</span><span>Pacemaker</span></footer>
+                    </div>
+                    <div class="project-card rounded-lg p-6 flex flex-col">
+                        <h3 class="text-xl font-bold text-strong mb-2">Enterprise Monitoring Solution</h3>
+                        <p class="flex-grow">Deployed Prometheus & Grafana for real-time monitoring of over 500 servers.</p>
+                         <footer class="mt-4 font-mono text-xs highlight space-x-4"><span>Prometheus</span><span>Docker</span></footer>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section flex flex-col items-center justify-center text-center fade-in">
+                <div class="bg-[#211f1c]/60 p-8 rounded-lg backdrop-blur-sm">
+                       <h2 class="text-3xl font-bold text-strong">Initiate Contact</h2>
+                       <p class="mt-4 max-w-2xl mx-auto">Open to new opportunities and collaborations. Let's discuss how my skills can benefit your team.</p>
+                       <a href="mailto:email@example.com" class="mt-8 inline-block border-2 border-highlight text-highlight font-bold text-lg py-3 px-8 rounded-lg hover:bg-highlight hover:text-[#211f1c] transition-all duration-300">
+                           Send Transmission
+                       </a>
+                 </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-[#3f3c38] py-8 z-10 relative bg-[#211f1c]">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <p class="text-center text-sm font-mono">&copy; 2025 Biswajit Sahoo. All Rights Reserved.</p>
+                <div class="flex items-center space-x-6">
+                    <a href="https://github.com/Heavendart888" aria-label="GitHub" class="text-[#dcd9c6] hover:text-highlight transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/heavendart888/" aria-label="LinkedIn" class="text-[#dcd9c6] hover:text-highlight transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
                     </a>
                 </div>
             </div>
-        </div>
-    </header>
-    <main>
-        <section class="container about" id="about">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
-            </div>
-            <div class="about-container">
-                <div class="left-about">
-                    <h4>Information About me</h4>
-                    <p>
-                        "Hello and welcome to my portfolio! I'm a skilled Kotlin full-stack developer 
-                        with experience in front-end and back-end development. I love building dynamic 
-                        applications that solve complex problems and provide a top-notch user experience. 
-                        I'm proficient in RESTful API development, database design, and UI/UX development. <br><br>
-                        My passion for coding extends beyond work, as I enjoy attending tech events, exploring new 
-                        technologies, and contributing to open-source projects.In my free time, you can find me honing 
-                        my skills, reading about the latest industry trends, and seeking out new challenges.<br><br>
-                         I take pride in staying up-to-date with the latest advancements and using my knowledge
-                          to help create innovative solutions for my clients. I'm committed to delivering 
-                          high-quality work and exceeding expectations. Let's work together to bring your vision to life!"
-
-
-
-                    </p>
-                    <div class="btn-con">
-                        <a href="#" class="main-btn">
-                            <span class="btn-text">Download CV</span>
-                            <span class="btn-icon"><i class="fas fa-download"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="right-about">
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">650+</p>
-                            <p class="small-text">Projects <br /> Completed</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">10+</p>
-                            <p class="small-text">Years of <br /> experience</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">300+</p>
-                            <p class="small-text">Happy <br /> Clients</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">400+</p>
-                            <p class="small-text">Customer <br /> reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-stats">
-                <h4 class="stat-title">My Skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">html5</p>
-                        <div class="progress-con">
-                            <p class="prog-text">80%</p>
-                            <div class="progress">
-                                <span class="html"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">css3</p>
-                        <div class="progress-con">
-                            <p class="prog-text">95%</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">javascript</p>
-                        <div class="progress-con">
-                            <p class="prog-text">75%</p>
-                            <div class="progress">
-                                <span class="js"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">ReactJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">75%</p>
-                            <div class="progress">
-                                <span class="react"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">NodeJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">87%</p>
-                            <div class="progress">
-                                <span class="node"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Python</p>
-                        <div class="progress-con">
-                            <p class="prog-text">70%</p>
-                            <div class="progress">
-                                <span class="python"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4 class="stat-title">My Timeline</h4>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2010 - present</p>
-                    <h5>Web Developer<span> - Vircrosoft</span></h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quasi vero fugit.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2008 - 2011</p>
-                    <h5>Software Engineer<span> - Boogle, Inc.</span></h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quasi vero fugit.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2016 - 2017</p>
-                    <h5>C++ Programmer<span> - Slime Tech</span></h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quasi vero fugit.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2009 - 2013</p>
-                    <h5>Business Degree<span> - Sussex University</span></h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quasi vero fugit.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2013 - 2016</p>
-                    <h5>Computer Science Degree<span> - Brookes University</span></h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quasi vero fugit.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2017 - present</p>
-                    <h5>3d Animation<span> - Brighton University</span></h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quasi vero fugit.
-                    </p>
-                </div>
-            </div>
-        </section>
-        <section class="container" id="portfolio">
-            <div class="main-title">
-                <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
-            </div>
-            <p class="port-text">
-                Here is some of my work that I've done in various programming languages.
-            </p>
-            <div class="portfolios">
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port1.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port2.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port3.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port4.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port5.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port2.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port7.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="container" id="blogs">
-            <div class="blogs-content">
-                <div class="main-title">
-                    <h2>My <span>Blogs</span><span class="bg-text">My Blogs</span></h2>
-                </div>
-                <div class="blogs">
-                    <div class="blog">
-                        <img src="img/port6.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How to Create Your Own Website
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog1.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How to Become an Expert in Web Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog2.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Become a Web Designer in 10 Days
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog3.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Debbuging made easy with Web Inspector
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/port1.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Get started with Web Design and UI Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/port3.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                This is what you need to know about Web Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="container contact" id="contact">
-            <div class="contact-container">
-                <div class="main-title">
-                    <h2>Contact <span>Me</span><span class="bg-text">Contact</span></h2>
-                </div>
-                <div class="contact-content-con">
-                    <div class="left-contact">
-                        <h4>Contact me here</h4>
-                        <p>
-                            The company itself is a very successful company. 
-                            In, the snacks never? You will see how you will receive them as it were.
-                        </p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Location</span>
-                                </div>
-                                <p>
-                                    : Odisha,India
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Email</span>
-                                </div>
-                                <p>
-                                    <span>: 8stolen8@gmail.com</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Education</span>
-                                </div>
-                                <p>
-                                    <span>: St Arnold School,Sundergarh</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class='fa fa-address-card'></i>
-                                    <span>Mobile Number</span>
-                                </div>
-                                <p>
-                                    <span>: +91 6370517456</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-globe-africa"></i>
-                                    <span>Languages</span>
-                                </div>
-                                <p>
-                                    <span>: American, English, Spanish</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="contact-icons">
-                            <div class="contact-icon">
-                                <a href="https://www.facebook.com/profile.php?id=100009581292481" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="https://twitter.com/Klh68550261" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="https://github.com/Heavendart888" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.instagram.com/parrotlinux131/" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-contact">
-                        <form action="" class="contact-form">
-                            <div class="input-control i-c-2">
-                                <input type="text" required placeholder="YOUR NAME">
-                                <input type="email" required placeholder="YOUR EMAIL">
-                            </div>
-                            <div class="input-control">
-                                <input type="text" required placeholder="ENTER SUBJECT">
-                            </div>
-                            <div class="input-control">
-                                <textarea name="" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
-                            </div>
-                            <div class="submit-btn">
-                                <a href="#" class="main-btn">
-                                    <span class="btn-text">Download CV</span>
-                                    <span class="btn-icon"><i class="fas fa-download"></i></span>
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div class="controls">
-        <div class="control active-btn" data-id="home" >
-            <i class="fas fa-home"></i>
-        </div>
-        <div class="control" data-id="about">
-            <i class="fas fa-user"></i>
-        </div>
-        <div class="control" data-id="portfolio">
-            <i class="fas fa-briefcase"></i>
-        </div>
-        <div class="control" data-id="blogs">
-            <i class="far fa-newspaper"></i>
-        </div>
-        <div class="control" data-id="contact">
-            <i class="fas fa-envelope-open"></i>
-        </div>
+        </footer>
     </div>
-    <div class="theme-btn">
-        <i class="fas fa-adjust"></i>
-    </div>
-    <script src="app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        window.onload = function () {
+            
+            // --- Elements ---
+            const cursor = document.querySelector('.cursor');
+            const cursorDot = document.querySelector('.cursor-dot');
+            const hoverables = document.querySelectorAll('a, button, .project-card');
+
+            // --- State for Smooth Cursor ---
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+            const cursorEasing = 0.15; // Decreased for a slightly slower, smoother feel
+
+            // --- Update target position on mouse move ---
+            document.addEventListener('mousemove', e => {
+                targetX = e.clientX;
+                targetY = e.clientY;
+            });
+
+            // --- Add hover effect for interactive elements ---
+            hoverables.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+            });
+
+
+            // --- On-Scroll Animation Logic ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { rootMargin: '0px', threshold: 0.1 });
+            const elementsToAnimate = document.querySelectorAll('.fade-in');
+            elementsToAnimate.forEach(el => observer.observe(el));
+
+            // --- Three.js Animation Logic ---
+            const container = document.getElementById('three-canvas-container');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 15;
+
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('three-canvas'),
+                alpha: true,
+                antialias: true,
+            });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Clamp pixel ratio for performance
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0);
+
+            // Custom Lathe Geometry with new color
+            const points = [];
+            for ( let i = 0; i < 10; i ++ ) {
+                points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 2 + 3, ( i - 5 ) * .8 ) );
+            }
+            const geometry = new THREE.LatheGeometry( points, 32 );
+            const material = new THREE.MeshBasicMaterial( { color: 0xffc247, wireframe: true } );
+            const lathe = new THREE.Mesh( geometry, material );
+            scene.add( lathe );
+
+
+            // Particles with new color
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 4000; // Reduced for better performance
+            const posArray = new Float32Array(particlesCount * 3);
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 40;
+            }
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                color: 0xffc247,
+                blending: THREE.AdditiveBlending,
+                transparent: true
+            });
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            // --- Scroll Animation Optimization ---
+            let lastScrollY = window.scrollY;
+
+            // These values will be smoothly interpolated in the animate loop
+            let currentRotX = 0;
+            let currentRotZ = 0;
+            let currentCamZ = 15;
+
+            function handleScroll() {
+                lastScrollY = window.scrollY;
+            }
+            // Use a passive listener for the scroll event to prevent performance issues.
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            const clock = new THREE.Clock();
+            const animate = () => {
+                // This loop runs on every frame
+                requestAnimationFrame(animate);
+                
+                const elapsedTime = clock.getElapsedTime();
+
+                // --- SMOOTH CURSOR ANIMATION ---
+                mouseX += (targetX - mouseX) * cursorEasing;
+                mouseY += (targetY - mouseY) * cursorEasing;
+                
+                cursor.style.transform = `translate3d(${mouseX - 15}px, ${mouseY - 10}px, 0)`;
+                cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+
+                // --- SMOOTH SCROLL 3D ANIMATION ---
+                const scrollEasing = 0.08; // Decreased for a slower, more graceful animation
+                const targetRot = -lastScrollY * 0.0005;
+                const targetCamZ = 15 + -lastScrollY * 0.01;
+                
+                currentRotX += (targetRot - currentRotX) * scrollEasing;
+                currentRotZ += (targetRot - currentRotZ) * scrollEasing;
+                currentCamZ += (targetCamZ - currentCamZ) * scrollEasing;
+
+                lathe.rotation.x = currentRotX;
+                lathe.rotation.z = currentRotZ;
+                camera.position.z = currentCamZ;
+
+                lathe.rotation.y = .2 * elapsedTime;
+                particlesMesh.rotation.y = -0.05 * elapsedTime;
+
+                renderer.render(scene, camera);
+            };
+            animate();
+
+            const onResize = () => {
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Update pixel ratio on resize
+            };
+            window.addEventListener('resize', onResize);
+            onResize();
+        };
+    </script>
 </body>
 </html>
