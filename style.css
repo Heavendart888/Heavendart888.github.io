@@ -12,6 +12,21 @@
       color: var(--text);
       overflow-x: hidden;
     }
+ .logo {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  animation: fadeIn 1.2s ease-in;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    width: 180px;  /* bigger on larger screens */
+  }
+}
+
+
     header {
       text-align: center;
       padding: 6rem 2rem;
