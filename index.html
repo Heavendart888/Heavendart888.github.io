@@ -1,108 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biswajit Sahoo Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biswajit Sahoo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-  <img src="logo.svg" alt="Logo" class="logo">
-  <h1>Biswajit Sahoo</h1>
-  <p>Network Engineer | CCNA | Cybersecurity Enthusiast</p>
-</header>
+    <div class="interface-wrapper">
 
+        <header>
+            <div>
+                <h1>Biswajit<span class="highlight-text">.py</span></h1>
+                <div class="sub-glitch">> RED TEAM DEVELOPER // PYTHON</div>
+            </div>
+            <div class="sys-status">
+                <span>NET: ONLINE</span>
+                <span>SEC: HIGH</span>
+                <span>LOC: INDIA</span>
+            </div>
+        </header>
 
-<nav>
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <div class="nav-links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+        <div class="hamburger" onclick="toggleNav()">[ MENU ACCESS ]</div>
+        <nav id="navMenu">
+            <a href="#intel">01 // INTEL</a>
+            <a href="#loadout">02 // LOADOUT</a>
+            <a href="#missions">03 // MISSIONS</a>
+            <a href="#comms">04 // COMMS</a>
+        </nav>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a passionate Network Engineer with expertise in designing, implementing, and managing secure and scalable networks. Experienced with Cisco devices, firewalls, and cloud networking solutions. Currently pursuing advanced certifications and exploring network automation.</p>
-</section>
+        <section id="intel">
+            <div class="panel-header">
+                <div class="panel-title">INTEL_BRIEF</div>
+                <div class="panel-line"></div>
+            </div>
+            <div class="grid" style="grid-template-columns: 2fr 1fr;">
+                <div class="tactical-card">
+                    <h3>TARGET_IDENTITY: BISWAJIT SAHOO</h3>
+                    <p>
+                        Specialized software operator focusing on the backend infrastructure.
+                        Expertise involves constructing automated logic loops, analyzing time-series data streams,
+                        and deploying stealthy scripts for file management.
+                    </p>
+                    <p class="highlight-text">> CURRENT OBJECTIVE: Automation & Data Architecture</p>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="grid">
-    <div class="card"><h3>Routing & Switching</h3><p>Cisco IOS, OSPF, EIGRP, BGP, VLANs</p></div>
-    <div class="card"><h3>Security</h3><p>Firewalls, VPNs, IDS/IPS, Zero Trust</p></div>
-    <div class="card"><h3>Cloud Networking</h3><p>AWS VPC, Azure Networking, SD-WAN</p></div>
-    <div class="card"><h3>Automation</h3><p>Python, Ansible, Network Scripting</p></div>
-  </div>
-</section>
+                    <br>
+                    <a href="https://heavendart888.github.io/Resume.pdf" download="Biswajit_Sahoo_Resume.pdf"
+                        target="_blank" class="cmd-btn">
+                        [ DOWNLOAD_RESUME_DATA ]
+                    </a>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Enterprise Network Setup</h3>
-      <p>Designed and deployed a scalable corporate LAN/WAN with Cisco Catalyst switches and ASA firewalls.</p>
+                </div>
+                <div class="tactical-card centered-card">
+                    <div class="experience-number">03</div>
+                    <div class="experience-text">YEARS EXPERIENCE</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="loadout">
+            <div class="panel-header">
+                <div class="panel-title">WEAPON_LOADOUT</div>
+                <div class="panel-line"></div>
+            </div>
+            <div class="grid">
+                <div class="tactical-card">
+                    <h3>[PYTHON_CORE]</h3>
+                    <p>Advanced OOP, Multithreading, Error Handling, Decorators.</p>
+                    <div class="stat-row">
+                        <span>PROFICIENCY</span>
+                        <span>████████ 98%</span>
+                    </div>
+                </div>
+                <div class="tactical-card">
+                    <h3>[DATA_OPS]</h3>
+                    <p>Pandas Series, DataFrame, NumPy, Statistical Analysis.</p>
+                    <div class="stat-row">
+                        <span>PROFICIENCY</span>
+                        <span>███████░ 85%</span>
+                    </div>
+                </div>
+                <div class="tactical-card">
+                    <h3>[BOT_NET]</h3>
+                    <p>Selenium, Web Scraping, OS Automation, File I/O.</p>
+                    <div class="stat-row">
+                        <span>PROFICIENCY</span>
+                        <span>████████ 95%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="missions">
+            <div class="panel-header">
+                <div class="panel-title">MISSION_LOG</div>
+                <div class="panel-line"></div>
+            </div>
+            <div class="grid">
+                <div class="tactical-card">
+                    <h3>OP: SERIES_ANALYZER</h3>
+                    <p>Ingests chaotic CSV streams. Filters noise. Outputs actionable trend intelligence using Pandas.
+                    </p>
+                    <div class="stat-row">
+                        <span>STATUS: ACTIVE</span>
+                        <span>TYPE: DATA</span>
+                    </div>
+                </div>
+                <div class="tactical-card">
+                    <h3>OP: DIR_DAEMON</h3>
+                    <p>Background service. Monitors file systems. Intercepts downloads and sorts them by signature.</p>
+                    <div class="stat-row">
+                        <span>STATUS: DEPLOYED</span>
+                        <span>TYPE: AUTO</span>
+                    </div>
+                </div>
+                <div class="tactical-card">
+                    <h3>OP: COMMAND_GRID</h3>
+                    <p>CLI-based task manager. No GUI required. Keyboard-driven database management.</p>
+                    <div class="stat-row">
+                        <span>STATUS: COMPLETE</span>
+                        <span>TYPE: CLI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comms">
+            <div class="panel-header">
+                <div class="panel-title">ENCRYPTED_UPLINK</div>
+                <div class="panel-line"></div>
+            </div>
+            <div class="grid comms-grid">
+                <div class="tactical-card no-border">
+                    <p>> INITIATING HANDSHAKE...</p>
+                    <p>> SECURE CHANNEL AVAILABLE.</p>
+                    <br>
+                    <p>DIRECT CONTACT:</p>
+                    <p style="color:white">heavendart.dev@zohomail.in</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/heavendart888" target="_blank"
+                            class="social-link">[LINKEDIN_LINK]</a>
+                        <a href="https://github.com/Heavendart888" target="_blank" class="social-link">[GITHUB_REPO]</a>
+                    </div>
+                </div>
+
+                <form action="mailto:heavendart.dev@zohomail.in" method="POST" enctype="text/plain">
+                    <input type="text" name="name" class="cmd-input" placeholder="ENTER CODENAME..." required>
+                    <input type="email" name="email" class="cmd-input" placeholder="ENTER RETURN FREQUENCY (EMAIL)..."
+                        required>
+                    <textarea name="message" class="cmd-input" rows="4" placeholder="ENTER PAYLOAD MESSAGE..."
+                        required></textarea>
+                    <button type="submit" class="cmd-btn">EXECUTE TRANSMISSION</button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            SYSTEM OF BISWAJIT SAHOO. END OF LINE.
+        </footer>
+
     </div>
-    <div class="card">
-      <h3>Cloud Hybrid Network</h3>
-      <p>Implemented AWS hybrid connectivity with on-premises data center using VPN and Direct Connect.</p>
-    </div>
-    <div class="card">
-      <h3>Network Automation</h3>
-      <p>Developed Python scripts to automate configuration backups and monitoring for Cisco devices.</p>
-    </div>
-  </div>
-</section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <form action="mailto:heavendart.dev@zohomail.in" method="POST" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
-  <p style="margin-top:2rem;">Or reach me directly:</p>
-  <p>Email: <a href="mailto:heavendart.dev@zohomail.in">heavendart.dev@zohomail.in</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/heavendart888" target="_blank">linkedin.com/in/heavendart888</a></p>
-  <p>GitHub: <a href="https://github.com/Heavendart888" target="_blank">github.com/Heavendart888</a></p>
-  <a href="Resume.pdf" class="btn">Download Resume</a>
-</section>
-
-<footer>
-  <p>© 2025 Biswajit Sahoo | Network Engineer</p>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('section, .card').forEach(el => {
-    observer.observe(el);
-  });
-
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-</script>
+    <script>
+        function toggleNav() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
 
 </body>
+
 </html>
-
-
