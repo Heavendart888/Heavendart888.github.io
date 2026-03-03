@@ -3,58 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
+    <title>Privacy Policy - IDS Vault</title>
     <style>
         body {
             background-color: #0b0f0e;
             color: #d7ffe7;
             font-family: monospace;
             padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
         }
         h1, h2 {
             color: #00ff9c;
+            border-bottom: 1px solid #00ff9c;
+            padding-bottom: 5px;
         }
         a {
             color: #00ff9c;
+        }
+        ul {
+            margin-top: 0;
+        }
+        li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-<h1>Privacy Policy</h1>
+<h1>Privacy Policy for IDS Vault</h1>
 
 <p>
-NewsApp respects your privacy. This application is designed to display publicly
-available news content and does not collect or store personal user data.
+HeavenDart respects your privacy. <b>IDS Vault</b> is built on a strict "Zero-Knowledge" architecture. We do not collect, transmit, or store any of your personal data on external servers. Everything you save in IDS Vault stays exclusively on your local device.
 </p>
 
-<h2>Information Collection</h2>
+<h2>1. Information Collection & Permissions</h2>
+<p>To function securely, IDS Vault requires the following local device permissions. None of this data is transmitted to us:</p>
+<ul>
+    <li><b>Camera:</b> Used strictly to capture images of your ID cards directly into the app. These photos are encrypted instantly and never appear in your phone's public gallery.</li>
+    <li><b>Storage / File Access:</b> Used only to read and write your encrypted documents to your device's local storage.</li>
+    <li><b>Biometric Authentication:</b> The app utilizes your device's native hardware (Fingerprint/Face ID) to unlock the vault. We do not collect, access, or store your actual biometric data.</li>
+</ul>
+
+<h2>2. Data Security & Encryption</h2>
 <p>
-The app does not require user registration and does not collect personal
-information such as name, email, location, or contact details.
+All documents are encrypted locally using military-grade <b>AES-256 encryption</b>. The unique encryption key is stored securely in your device's hardware keystore. Because we have no cloud servers and no access to your device, <b>we cannot view, recover, or reset your encrypted files</b> under any circumstances.
 </p>
 
-<h2>Data Usage</h2>
+<h2>3. Data Sharing & Third Parties</h2>
 <p>
-News content is fetched from third-party news sources via public APIs.
-No user data is transmitted or stored by the application.
+IDS Vault operates completely offline. We do not use third-party analytics, cloud backups, or advertising trackers. Your data is <b>never</b> shared, sold, or transmitted to us or any third parties.
 </p>
 
-<h2>Third-Party Services</h2>
+<h2>4. Contact</h2>
 <p>
-The app may load images and articles from external websites.
-These third-party services have their own privacy policies.
-</p>
-
-<h2>Contact</h2>
-<p>
-If you have any questions regarding this Privacy Policy, you may contact us at:
+If you have any questions regarding this Privacy Policy or the security of IDS Vault, you may contact the developer at:
 <br><br>
 <b>heavendart.dev@zohomail.in</b>
 </p>
 
-<p style="margin-top:40px;">
-Last updated: 2026
+<p style="margin-top:40px; color: #558b6e;">
+Last updated: March 2026
 </p>
 
 </body>
