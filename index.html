@@ -4,178 +4,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biswajit Sahoo</title>
+    <title>Biswajit Sahoo | Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="interface-wrapper">
+    <!-- Premium Overlays (Noise & Grid) -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    
+    <!-- Parallax Aurora Background -->
+    <div class="aurora-bg">
+        <div class="orb orb-1" id="orb1"></div>
+        <div class="orb orb-2" id="orb2"></div>
+        <div class="orb orb-3" id="orb3"></div>
+    </div>
 
-        <header>
-            <div>
-                <h1>Biswajit<span class="highlight-text">.py</span></h1>
-                <div class="sub-glitch">> RED TEAM DEVELOPER // PYTHON</div>
+    <div class="interface-wrapper">
+        <nav class="glass-nav" id="topNav">
+            <div class="nav-brand">Biswajit<span>.py</span></div>
+            <div class="nav-links" id="navMenu">
+                <a href="#intel">Intel</a>
+                <a href="#loadout">Loadout</a>
+                <a href="#missions">Missions</a>
+                <a href="#comms">Comms</a>
             </div>
-            <div class="sys-status">
-                <span>NET: ONLINE</span>
-                <span>SEC: HIGH</span>
-                <span>LOC: INDIA</span>
+            <div class="hamburger" onclick="toggleNav()" id="hamburgerIcon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+
+        <header class="hero-section">
+            <div class="hero-card">
+                <div class="hero-content">
+                    <div class="badge">
+                        <div class="badge-dot"></div>
+                        Red Team Developer
+                    </div>
+                    <!-- Staggered Text Reveal -->
+                    <h1>
+                        <div class="reveal-text"><span>Engineering the</span></div><br>
+                        <div class="reveal-text delay-1"><span class="gradient-text">Backend Infrastructure</span></div>
+                    </h1>
+                    <div class="reveal-text delay-2" style="display: block;">
+                        <p class="subtitle"><span>Python Specialist. Data Architect. Automation Expert.</span></p>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#comms" class="btn btn-primary magnetic-btn">Initiate Comms</a>
+                        <a href="https://heavendart888.github.io/Resume.pdf" target="_blank" class="btn btn-secondary magnetic-btn">Download Resume</a>
+                    </div>
+                </div>
             </div>
         </header>
 
-        <div class="hamburger" onclick="toggleNav()">[ MENU ACCESS ]</div>
-        <nav id="navMenu">
-            <a href="#intel">01 // INTEL</a>
-            <a href="#loadout">02 // LOADOUT</a>
-            <a href="#missions">03 // MISSIONS</a>
-            <a href="#comms">04 // COMMS</a>
-        </nav>
-
-        <section id="intel">
-            <div class="panel-header">
-                <div class="panel-title">INTEL_BRIEF</div>
-                <div class="panel-line"></div>
-            </div>
-            <div class="grid" style="grid-template-columns: 2fr 1fr;">
-                <div class="tactical-card">
-                    <h3>TARGET_IDENTITY: BISWAJIT SAHOO</h3>
+        <section id="intel" class="fade-in">
+            <h2 class="section-title">Target Intel</h2>
+            <div class="grid intel-grid">
+                <div class="glass-card">
+                    <h3>Profile Outline</h3>
                     <p>
-                        Specialized software operator focusing on the backend infrastructure.
-                        Expertise involves constructing automated logic loops, analyzing time-series data streams,
-                        and deploying stealthy scripts for file management.
+                        Specialized software operator focusing on backend infrastructure. 
+                        My expertise involves constructing automated logic loops, analyzing complex time-series data streams, 
+                        and deploying highly efficient scripts for system management.
                     </p>
-                    <p class="highlight-text">> CURRENT OBJECTIVE: Automation & Data Architecture</p>
-
-                    <br>
-                    <a href="https://heavendart888.github.io/Resume.pdf" download="Biswajit_Sahoo_Resume.pdf"
-                        target="_blank" class="cmd-btn">
-                        [ DOWNLOAD_RESUME_DATA ]
-                    </a>
-
+                    <div class="highlight-box">
+                        Current Objective: Advancing Automation & Data Architecture
+                    </div>
                 </div>
-                <div class="tactical-card centered-card">
-                    <div class="experience-number">03</div>
-                    <div class="experience-text">YEARS EXPERIENCE</div>
+                <div class="glass-card stat-card">
+                    <div class="stat-number">03</div>
+                    <div class="stat-label">Years Active Experience</div>
                 </div>
             </div>
         </section>
 
-        <section id="loadout">
-            <div class="panel-header">
-                <div class="panel-title">WEAPON_LOADOUT</div>
-                <div class="panel-line"></div>
-            </div>
-            <div class="grid">
-                <div class="tactical-card">
-                    <h3>[PYTHON_CORE]</h3>
+        <section id="loadout" class="fade-in">
+            <h2 class="section-title">Technical Loadout</h2>
+            <div class="grid col-3">
+                <div class="glass-card tech-card">
+                    <div class="card-icon">🐍</div>
+                    <h3>Python Core</h3>
                     <p>Advanced OOP, Multithreading, Error Handling, Decorators.</p>
-                    <div class="stat-row">
-                        <span>PROFICIENCY</span>
-                        <span>████████ 98%</span>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-target="98%"></div>
                     </div>
                 </div>
-                <div class="tactical-card">
-                    <h3>[DATA_OPS]</h3>
+                <div class="glass-card tech-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Data Ops</h3>
                     <p>Pandas Series, DataFrame, NumPy, Statistical Analysis.</p>
-                    <div class="stat-row">
-                        <span>PROFICIENCY</span>
-                        <span>███████░ 85%</span>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-target="85%"></div>
                     </div>
                 </div>
-                <div class="tactical-card">
-                    <h3>[BOT_NET]</h3>
+                <div class="glass-card tech-card">
+                    <div class="card-icon">🤖</div>
+                    <h3>Bot Net</h3>
                     <p>Selenium, Web Scraping, OS Automation, File I/O.</p>
-                    <div class="stat-row">
-                        <span>PROFICIENCY</span>
-                        <span>████████ 95%</span>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-target="95%"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="missions">
-            <div class="panel-header">
-                <div class="panel-title">MISSION_LOG</div>
-                <div class="panel-line"></div>
-            </div>
-            <div class="grid">
-                <div class="tactical-card">
-                    <h3>OP: SERIES_ANALYZER</h3>
-                    <p>Ingests chaotic CSV streams. Filters noise. Outputs actionable trend intelligence using Pandas.
-                    </p>
-                    <div class="stat-row">
-                        <span>STATUS: ACTIVE</span>
-                        <span>TYPE: DATA</span>
-                    </div>
+        <section id="missions" class="fade-in">
+            <h2 class="section-title">Mission Logs</h2>
+            <div class="grid col-3">
+                <div class="glass-card mission-card">
+                    <div class="status-badge active">Active</div>
+                    <h3>Series Analyzer</h3>
+                    <p>Ingests chaotic CSV streams, filters out noise, and outputs actionable trend intelligence using Pandas dataframes.</p>
                 </div>
-                <div class="tactical-card">
-                    <h3>OP: DIR_DAEMON</h3>
-                    <p>Background service. Monitors file systems. Intercepts downloads and sorts them by signature.</p>
-                    <div class="stat-row">
-                        <span>STATUS: DEPLOYED</span>
-                        <span>TYPE: AUTO</span>
-                    </div>
+                <div class="glass-card mission-card">
+                    <div class="status-badge deployed">Deployed</div>
+                    <h3>Dir Daemon</h3>
+                    <p>Background service protocol. Monitors file systems, intercepts downloads, and categorizes them autonomously by signature.</p>
                 </div>
-                <div class="tactical-card">
-                    <h3>OP: COMMAND_GRID</h3>
-                    <p>CLI-based task manager. No GUI required. Keyboard-driven database management.</p>
-                    <div class="stat-row">
-                        <span>STATUS: COMPLETE</span>
-                        <span>TYPE: CLI</span>
-                    </div>
+                <div class="glass-card mission-card">
+                    <div class="status-badge complete">Complete</div>
+                    <h3>Command Grid</h3>
+                    <p>Ultra-lightweight CLI task manager. Eliminates GUI overhead for rapid, keyboard-driven database management.</p>
                 </div>
             </div>
         </section>
 
-        <section id="comms">
-            <div class="panel-header">
-                <div class="panel-title">ENCRYPTED_UPLINK</div>
-                <div class="panel-line"></div>
-            </div>
+        <section id="comms" class="fade-in">
+            <h2 class="section-title">Encrypted Uplink</h2>
             <div class="grid comms-grid">
-                <div class="tactical-card no-border">
-                    <p>> INITIATING HANDSHAKE...</p>
-                    <p>> SECURE CHANNEL AVAILABLE.</p>
-                    <br>
-                    <p>DIRECT CONTACT:</p>
-                    <p style="color:white">heavendart.dev@zohomail.in</p>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/heavendart888" target="_blank"
-                            class="social-link">[LINKEDIN_LINK]</a>
-                        <a href="https://github.com/Heavendart888" target="_blank" class="social-link">[GITHUB_REPO]</a>
+                <div class="glass-card contact-info">
+                    <h3>Direct Contact</h3>
+                    <p style="margin-bottom: 20px;">Secure channel available for professional inquiries, contract work, and infrastructure collaboration.</p>
+                    <a href="mailto:heavendart.dev@zohomail.in" class="email-link">heavendart.dev@zohomail.in</a>
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <a href="https://linkedin.com/in/heavendart888" target="_blank" class="btn btn-secondary magnetic-btn" style="padding: 12px 24px; font-size: 0.9rem;">LinkedIn</a>
+                        <a href="https://github.com/Heavendart888" target="_blank" class="btn btn-secondary magnetic-btn" style="padding: 12px 24px; font-size: 0.9rem;">GitHub</a>
                     </div>
                 </div>
 
-                <form action="mailto:heavendart.dev@zohomail.in" method="POST" enctype="text/plain">
-                    <input type="text" name="name" class="cmd-input" placeholder="ENTER CODENAME..." required>
-                    <input type="email" name="email" class="cmd-input" placeholder="ENTER RETURN FREQUENCY (EMAIL)..."
-                        required>
-                    <textarea name="message" class="cmd-input" rows="4" placeholder="ENTER PAYLOAD MESSAGE..."
-                        required></textarea>
-                    <button type="submit" class="cmd-btn">EXECUTE TRANSMISSION</button>
-                </form>
+                <div class="glass-card">
+                    <form action="mailto:heavendart.dev@zohomail.in" method="POST" enctype="text/plain" class="modern-form">
+                        <input type="text" name="name" required placeholder="Codename / Your Name">
+                        <input type="email" name="email" required placeholder="Return Frequency (Email)">
+                        <textarea name="message" rows="4" required placeholder="Payload / Your Message"></textarea>
+                        <button type="submit" class="btn btn-primary magnetic-btn" style="width: 100%; border-radius: 12px;">Transmit Payload</button>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <footer>
-    SYSTEM OF BISWAJIT SAHOO. END OF LINE.
-    <br><br>
-    <a href="privacy-policy.html" style="color:#00ff9c; text-decoration:none;">
-        [ PRIVACY_POLICY ]
-    </a>
-</footer>
+        <footer style="text-align: center; padding: 50px 0; border-top: 1px solid var(--glass-border); color: var(--text-muted); margin-top: 60px; margin-bottom: 30px;">
+            <p>System architecture by Biswajit Sahoo. All rights reserved.</p>
+            <a href="#" onclick="openPrivacyModal(event)" style="color: var(--accent-cyan); text-decoration: none; margin-top: 15px; display: inline-block; transition: 0.3s; font-weight: 500;">Privacy Policy</a>
+        </footer>
+    </div>
 
-
+    <!-- GLASSMORPHISM PRIVACY POLICY MODAL -->
+    <div class="modal-overlay" id="privacyModal" onclick="closePrivacyModal(event)">
+        <div class="glass-card modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="close-btn" onclick="closePrivacyModal(event)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Last Updated: May 2026</p>
+                <h4>1. Data Collection</h4>
+                <p>This portfolio is a static demonstration of system architecture. No personal tracking cookies, analytics, or background telemetry are utilized during your session. If you initiate contact via the encrypted uplink (email form), your provided codename and email will only be used for direct communication.</p>
+                <h4>2. Communication Security</h4>
+                <p>Emails sent through the contact form are routed securely via standard mail transfer protocols. I do not store email addresses in automated databases or share them with third-party intelligence or marketing firms.</p>
+                <h4>3. Third-Party Links</h4>
+                <p>This system contains secure routing links to external architectures (GitHub, LinkedIn). Once you leave this perimeter, you are subject to the privacy protocols of those respective platforms.</p>
+                <h4>4. Consent</h4>
+                <p>By engaging with this interface, you acknowledge and agree to these minimal, non-invasive data practices.</p>
+            </div>
+        </div>
     </div>
 
     <script>
+        // --- 1. GLOBAL MOUSE TRACKER (Parallax & Light) ---
+        const orb1 = document.getElementById('orb1');
+        const orb2 = document.getElementById('orb2');
+        const orb3 = document.getElementById('orb3');
+        const isMobile = window.innerWidth <= 768;
+
+        document.addEventListener("mousemove", (e) => {
+            // A. Aurora Parallax Effect
+            if (!isMobile) {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                orb1.style.transform = `translate(${x * -40}px, ${y * -40}px)`;
+                orb2.style.transform = `translate(${x * 40}px, ${y * 40}px)`;
+                orb3.style.transform = `translate(${x * -20}px, ${y * 20}px)`;
+            }
+
+            // B. Card Glow & 3D Tilt Effect
+            document.querySelectorAll(".glass-card").forEach((card) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Set CSS variables for the flashlight glow
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+
+                // Calculate 3D tilt (if hovering inside the card and not on mobile)
+                if(!isMobile && x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    // Max rotation is 8 degrees
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                }
+            });
+        });
+
+        // Reset Card Tilt on Mouse Leave
+        document.querySelectorAll(".glass-card").forEach((card) => {
+            card.addEventListener("mouseleave", () => {
+                if(!isMobile) {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+                }
+            });
+        });
+
+        // --- 2. MAGNETIC BUTTONS ---
+        const magnets = document.querySelectorAll('.magnetic-btn');
+        magnets.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Pull the button towards the mouse (strength = 0.3)
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                // Snap back to original position
+                btn.style.transform = 'translate(0px, 0px)';
+            });
+        });
+
+        // --- 3. MOBILE MENU ---
         function toggleNav() {
             document.getElementById('navMenu').classList.toggle('active');
+            document.getElementById('hamburgerIcon').classList.toggle('active');
         }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('hamburgerIcon').classList.remove('active');
+            });
+        });
+
+        // --- 4. PRIVACY MODAL ---
+        function openPrivacyModal(e) {
+            e.preventDefault();
+            document.getElementById('privacyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePrivacyModal(e) {
+            if(e) e.preventDefault();
+            document.getElementById('privacyModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closePrivacyModal();
+        });
+
+        // --- 5. STAGGERED SCROLL REVEALS & PROGRESS BARS ---
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const bars = entry.target.querySelectorAll('.progress-bar');
+                    bars.forEach(bar => bar.style.width = bar.getAttribute('data-target'));
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
     </script>
 
 </body>
-
 </html>
-
