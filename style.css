@@ -4,10 +4,10 @@
   --text-main: #ffffff;
   --text-muted: #8b949e;
   
-  /* High-Voltage Gradients */
+  /* High-Voltage Gradients updated for Cyber/Network theme */
   --accent-cyan: #00f0ff;
-  --accent-purple: #9d4edd;
-  --accent-pink: #ff0055;
+  --accent-purple: #0a84ff; /* Switched to network blue */
+  --accent-pink: #00ff88;   /* Switched to terminal green */
   --gradient-main: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
   
   /* Advanced Glass & Glow */
@@ -96,7 +96,6 @@ body {
   border-radius: var(--border-radius); padding: 45px;
   position: relative; overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  /* 3D setup */
   transform-style: preserve-3d;
   transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
   transition: transform 0.6s var(--spring-easing), border-color 0.4s ease;
@@ -119,8 +118,6 @@ body {
 
 .glass-card:hover { border-color: rgba(255,255,255,0.1); box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.05); }
 .glass-card:hover::before, .glass-card:hover::after { opacity: 1; }
-
-/* Pop interior elements out in 3D */
 .glass-card > * { position: relative; z-index: 2; transform: translateZ(30px); transition: transform 0.4s ease; }
 .glass-card:hover > * { transform: translateZ(40px); }
 
@@ -163,7 +160,7 @@ body {
 .btn {
   padding: 18px 45px; border-radius: 14px; font-size: 1rem; font-weight: 600;
   text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
-  transition: background 0.3s, box-shadow 0.3s, color 0.3s; /* Transform handled by JS for magnetic effect */
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
   will-change: transform;
 }
 .btn-primary { background: var(--text-main); color: var(--bg-color); box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); }
@@ -185,7 +182,7 @@ section { margin-bottom: 12rem; }
 .glass-card h3 { font-size: 1.6rem; margin-bottom: 15px; font-weight: 600; letter-spacing: -0.5px; color: #fff; }
 .glass-card p { color: var(--text-muted); font-size: 1.05rem; }
 
-.highlight-box { margin-top: 35px; padding: 24px; background: rgba(157, 78, 221, 0.08); border-left: 3px solid var(--accent-purple); border-radius: 0 12px 12px 0; font-size: 0.95rem; font-weight: 500; color: #fff; }
+.highlight-box { margin-top: 35px; padding: 24px; background: rgba(10, 132, 255, 0.08); border-left: 3px solid var(--accent-purple); border-radius: 0 12px 12px 0; font-size: 0.95rem; font-weight: 500; color: #fff; }
 
 /* Hollow Typography for Stats */
 .stat-number {
@@ -210,7 +207,7 @@ section { margin-bottom: 12rem; }
 .status-badge { display: inline-block; padding: 8px 16px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; margin-bottom: 25px; letter-spacing: 1.5px; text-transform: uppercase; }
 .status-badge.active { background: rgba(0, 255, 136, 0.05); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.3); box-shadow: 0 0 20px rgba(0, 255, 136, 0.15); }
 .status-badge.deployed { background: rgba(0, 240, 255, 0.05); color: var(--accent-cyan); border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); }
-.status-badge.complete { background: rgba(157, 78, 221, 0.05); color: var(--accent-purple); border: 1px solid rgba(157, 78, 221, 0.3); box-shadow: 0 0 20px rgba(157, 78, 221, 0.15); }
+.status-badge.complete { background: rgba(10, 132, 255, 0.05); color: var(--accent-purple); border: 1px solid rgba(10, 132, 255, 0.3); box-shadow: 0 0 20px rgba(10, 132, 255, 0.15); }
 
 /* --- FORMS & COMMS --- */
 .email-link { font-size: 1.8rem; color: var(--text-main); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 15px; transition: 0.3s; }
@@ -244,7 +241,6 @@ section { margin-bottom: 12rem; }
 @media (max-width: 768px) {
   .hero-card { padding: 100px 20px; } .hero-card h1 { font-size: 3.2rem; letter-spacing: -1.5px; }
   .col-3, .intel-grid, .comms-grid { grid-template-columns: 1fr; }
-  /* Disable 3D tilt on mobile for performance */
   .glass-card { transform: none !important; } .glass-card:hover { transform: translateY(-5px) !important; }
   .glass-card > * { transform: none !important; } .glass-card:hover > * { transform: none !important; }
   .nav-links { flex-direction: column; position: absolute; top: 120%; left: 0; width: 100%; background: rgba(2, 3, 5, 0.98); backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 16px; gap: 0; max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s ease; }
